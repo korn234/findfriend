@@ -72,7 +72,7 @@ app.use((req, res, next) => {
   });
 
   // Use environment port or default to 5000
-  const port = process.env.PORT || 10000;
+  const port = process.env.PORT || 5000;
   server.listen({
     port: parseInt(port.toString()),
     host: "0.0.0.0",
