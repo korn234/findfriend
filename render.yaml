@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: friend-finder-app
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run dev
+    envVars:
+      - key: NODE_ENV
+        value: development
+      - key: PORT
+        fromService:
+          type: web
+          name: friend-finder-app
+          property: port
+    healthCheckPath: /api/me
