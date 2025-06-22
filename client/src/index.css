@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(41, 67%, 98%);
+  --foreground: hsl(28, 45%, 15%);
+  --muted: hsl(38, 33%, 92%);
+  --muted-foreground: hsl(35, 12%, 46%);
+  --popover: hsl(41, 67%, 98%);
+  --popover-foreground: hsl(28, 45%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(28, 45%, 15%);
+  --border: hsl(38, 15%, 85%);
+  --input: hsl(38, 15%, 85%);
+  --primary: hsl(28, 45%, 55%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(38, 33%, 92%);
+  --secondary-foreground: hsl(28, 45%, 15%);
+  --accent: hsl(335, 25%, 82%);
+  --accent-foreground: hsl(28, 45%, 15%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(28, 45%, 55%);
+  --radius: 0.75rem;
+  
+  /* Milk tea custom colors */
+  --tea-milk-light: hsl(41, 67%, 98%);
+  --tea-milk-cream: hsl(38, 33%, 92%);
+  --tea-milk-base: hsl(35, 35%, 78%);
+  --tea-milk-medium: hsl(31, 40%, 65%);
+  --tea-milk-dark: hsl(28, 45%, 55%);
+  --accent-pink: hsl(335, 25%, 82%);
+  --accent-brown: hsl(28, 45%, 15%);
+  --accent-warm: hsl(38, 42%, 72%);
+}
+
+.dark {
+  --background: hsl(28, 15%, 8%);
+  --foreground: hsl(41, 67%, 98%);
+  --muted: hsl(28, 15%, 15%);
+  --muted-foreground: hsl(35, 12%, 54%);
+  --popover: hsl(28, 15%, 8%);
+  --popover-foreground: hsl(41, 67%, 98%);
+  --card: hsl(28, 15%, 8%);
+  --card-foreground: hsl(41, 67%, 98%);
+  --border: hsl(28, 15%, 15%);
+  --input: hsl(28, 15%, 15%);
+  --primary: hsl(28, 45%, 55%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(28, 15%, 15%);
+  --secondary-foreground: hsl(41, 67%, 98%);
+  --accent: hsl(335, 25%, 32%);
+  --accent-foreground: hsl(41, 67%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(0, 85%, 97%);
+  --ring: hsl(28, 45%, 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    @apply bg-tea-milk-light text-foreground font-sans antialiased;
+    background: linear-gradient(135deg, hsl(var(--tea-milk-light)), hsl(var(--tea-milk-cream)));
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--tea-milk-cream));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--tea-milk-medium));
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--tea-milk-dark));
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-tea-milk-medium to-tea-milk-dark text-white hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5;
+  }
+
+  .form-input {
+    @apply transition-all duration-200 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:shadow-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .tab-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  .swipe-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+
+  .swipe-card-dragging {
+    transition: none;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@layer utilities {
+  .text-tea-milk-light { color: hsl(var(--tea-milk-light)); }
+  .text-tea-milk-cream { color: hsl(var(--tea-milk-cream)); }
+  .text-tea-milk-base { color: hsl(var(--tea-milk-base)); }
+  .text-tea-milk-medium { color: hsl(var(--tea-milk-medium)); }
+  .text-tea-milk-dark { color: hsl(var(--tea-milk-dark)); }
+  .text-accent-pink { color: hsl(var(--accent-pink)); }
+  .text-accent-brown { color: hsl(var(--accent-brown)); }
+  .text-accent-warm { color: hsl(var(--accent-warm)); }
+  
+  .bg-tea-milk-light { background-color: hsl(var(--tea-milk-light)); }
+  .bg-tea-milk-cream { background-color: hsl(var(--tea-milk-cream)); }
+  .bg-tea-milk-base { background-color: hsl(var(--tea-milk-base)); }
+  .bg-tea-milk-medium { background-color: hsl(var(--tea-milk-medium)); }
+  .bg-tea-milk-dark { background-color: hsl(var(--tea-milk-dark)); }
+  .bg-accent-pink { background-color: hsl(var(--accent-pink)); }
+  .bg-accent-brown { background-color: hsl(var(--accent-brown)); }
+  .bg-accent-warm { background-color: hsl(var(--accent-warm)); }
+  
+  .border-tea-milk-light { border-color: hsl(var(--tea-milk-light)); }
+  .border-tea-milk-cream { border-color: hsl(var(--tea-milk-cream)); }
+  .border-tea-milk-base { border-color: hsl(var(--tea-milk-base)); }
+  .border-tea-milk-medium { border-color: hsl(var(--tea-milk-medium)); }
+  .border-tea-milk-dark { border-color: hsl(var(--tea-milk-dark)); }
+  .border-accent-pink { border-color: hsl(var(--accent-pink)); }
+  .border-accent-brown { border-color: hsl(var(--accent-brown)); }
+  .border-accent-warm { border-color: hsl(var(--accent-warm)); }
+}
