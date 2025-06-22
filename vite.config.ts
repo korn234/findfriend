@@ -111,6 +111,9 @@ export default defineConfig({
           changeOrigin: true,
         }
       },
+      allowedHosts: [
+        "findfriend-hpio.onrender.com"
+      ],
     },
   // Enhanced dependency optimization
   optimizeDeps: {
